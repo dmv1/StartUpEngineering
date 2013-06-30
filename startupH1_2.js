@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
+var fs = require('fs');
 // calculate the 1st 100 prime numbers
 
 
 //check if a number n is prime, 0,1 are prime so return false, if > 1, send to checkPrime
 //return true is prime, false is not prime
 var isPrime = function(n){
-  if(n == 0){
+	if(n == 0){
 		return false;
 	}
 	else if (n == 1){
@@ -51,9 +52,13 @@ var firstkPrimes = function(k){
 }
 
 var k = 100;
-var joinCharacter = '-'; // the character you would like to join the final prime array with
+var joinCharacter = ','; // the character you would like to join the final prime array with
 primes = firstkPrimes(k);
-console.log('The first ' + k + ' Prime Numbers are ' + primes.join(joinCharacter));
+outfile = 'Homework1_2.txt';
+outString = 'The first ' + k + ' Prime Numbers are ' + primes.join(joinCharacter);
+fs.writeFileSync(outfile, outString)
+
+console.log(outString);
 
 
 
